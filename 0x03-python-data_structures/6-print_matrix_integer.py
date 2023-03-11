@@ -4,8 +4,8 @@ def print_matrix_integer(matrix=[[]]):
         l = 1
         for j in i:
             if l == len(i):
-                print("{:d}", str.format(j), end="")
+                print("{:d}".format(j), end="")
             else:
-                print("{:d}", str.format(j), end=" ")
+                print("{:d}".format(j), end=" ")
             l = l + 1
         print()
