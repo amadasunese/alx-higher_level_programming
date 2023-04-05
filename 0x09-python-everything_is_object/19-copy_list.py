@@ -1,3 +1,4 @@
-copy_list = __import__('19-copy_list').copy_list
-my_list = [1, 2, 3]
-print(my_list)
+#!/usr/bin/python3
+def copy_list(l):
+    return my_list = [1, 2, 3]
+    print(my_list)
