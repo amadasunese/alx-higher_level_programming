@@ -59,3 +59,7 @@ class TestMaxInteger(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 07737d2f9a5d23a1ca33e79960cb29aa5f301c10
