@@ -1,10 +1,4 @@
-102-python.c
-
-/*
- * File: 102-python.c
- */
-
-#include "Python.h"
+#include "python.h"
 
 /**
  * print_python_string - Prints information about Python strings.
