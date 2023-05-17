@@ -3,5 +3,8 @@
 -- Results must be sorted in ascending order by cities.id
 -- You are not allowed to use the JOIN keyword
 
-SELECT id INTO @state_id FROM states WHERE name = 'California';
-SELECT * FROM cities WHERE state_id = @state_id ORDER BY id ASC;
+SELECT id, name FROM cities
+WHERE state_id = (
+      SELECT id FROM states
+      WHERE name = "California")
+ORDER BY id;
