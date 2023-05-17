@@ -5,14 +5,10 @@
 -- Results must be sorted in ascending order by the show title
 -- You can use a maximum of two SELECT statement
 
-SET @comedy_genre_id := (SELECT id FROM tv_genres WHERE genre = 'Comedy' LIMIT 1);
-
--- List shows without the genre "Comedy"
-SELECT tv_shows.title
-FROM tv_shows
+SELECT tv_shows.title FROM tv_shows
 WHERE tv_shows.id NOT IN (
-  SELECT tv_show_genres.show_id
-  FROM tv_show_genres
-  WHERE genre_id = @comedy_genre_id
-)
-ORDER BY tv_shows.title ASC;
+      SELECT tv_shows.id FROM tv_shows
+      JOIN tv_show_genres ON tv_shows.id=tv_show_genres.show_id
+      JOIN tv_genres ON tv_genres.id=tv_show_genres.genre_id
+      WHERE tv_genres.name = "Comedy" )
+ORDER BY tv_shows.title;
