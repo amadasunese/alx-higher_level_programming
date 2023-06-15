@@ -1,8 +1,21 @@
 #!/usr/bin/node
 
-const originalList = require('./100-data').list;
-console.log(originalList);
-const mappedList = originalList.map(function (e, index) {
-  return (e * index);
-});
-console.log(mappedList);
+// Importing the dictionary from 101-data.js
+const { dict } = require('./101-data');
+
+// Computing the new dictionary
+const newDict = {};
+
+// Iterating over the user IDs in the initial dictionary
+for (const userId in dict) {
+  const occurrences = dict[userId];
+  
+  // Checking if the occurrences value exists as a key in the new dictionary
+  if (occurrences in newDict) {
+    newDict[occurrences].push(userId);
+  } else {
+    newDict[occurrences] = [userId];
+  }
+}
+
+console.log(newDict);
