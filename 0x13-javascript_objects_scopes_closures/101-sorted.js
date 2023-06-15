@@ -9,7 +9,7 @@ const newDict = {};
 // Iterating over the user IDs in the initial dictionary
 for (const userId in dict) {
   const occurrences = dict[userId];
-  
+
   // Checking if the occurrences value exists as a key in the new dictionary
   if (occurrences in newDict) {
     newDict[occurrences].push(userId);
