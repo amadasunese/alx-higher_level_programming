@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
-Python script that takes in a URL, then sends a request to the URL and displays the body of the response (decoded in utf-8).
+Python script that takes in a URL, then sends a request
+to the URL and displays the body of the response
+(decoded in utf-8).
 """
 from sys import argv
 from urllib import request, error

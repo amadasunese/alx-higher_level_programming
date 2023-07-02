@@ -12,5 +12,5 @@ if __name__ == "__main__":
         res = requests.get(argv[1])
         res.raise_for_status()
         print(res.text)
-    except:
-        print("Error code: {}".format(res.status_code))
+    except requests.exceptions.RequestException as e:
+        print("Error: {}".format(str(e)))
