@@ -18,5 +18,5 @@ if __name__ == "__main__":
             print("{}: {}".format(sha, author))
             if i == 10:
                 break
-    except:
+    except ValueError:
         print("Not a valid PARAMETER")
