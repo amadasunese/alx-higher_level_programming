@@ -13,5 +13,4 @@ if __name__ == "__main__":
         res.raise_for_status()
         print(res.text)
 
-    except res.status:
         print("Error: {}".format(str(e)))
