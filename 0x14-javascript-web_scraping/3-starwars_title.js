@@ -3,7 +3,7 @@
 
 const req = require('request');
 const episode = process.argv[2];
-const url = 'https://swapi-api.alx-tools.com/api/films/:id' + episode;
+const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
 
 req(url, function (error, response, body) {
   if (error) {
