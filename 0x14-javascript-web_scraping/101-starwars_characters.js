@@ -1,17 +1,47 @@
 #!/usr/bin/node
-// script that gets the contents of a webpage and stores it in a file.
+// script that prints all characters of a Star Wars movie:.
 
-const url = process.argv[2];
-const file = process.argv[3];
-const req = require('request');
-const fileStream = require('fs');
+const request = require('request');
 
-req(url, function (error, response, body) {
-  if (error) {
-    console.log(error);
-  } else {
-    fileStream.writeFile(file, body, 'utf-8', (error) => {
-      if (error) console.log(error);
+function getDataFrom (url) {
+  return new Promise(function (resolve, reject) {
+    request(url, function (err, _res, body) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(body);
+      }
     });
-  }
-});
+  });
+}
+
+function errHandler (err) {
+  console.log(err);
+}
+
+function printMovieCharacters (movieId) {
+  const movieUri = `https://swapi-api.hbtn.io/api/films/${movieId}`;
+
+  getDataFrom(movieUri)
+    .then(JSON.parse, errHandler)
+    .then(function (res) {
+      const characters = res.characters;
+      const promises = [];
+
+      for (let i = 0; i < characters.length; ++i) {
+        promises.push(getDataFrom(characters[i]));
+      }
+
+      Promise.all(promises)
+        .then((results) => {
+          for (let i = 0; i < results.length; ++i) {
+            console.log(JSON.parse(results[i]).name);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+}
+
+printMovieCharacters(process.argv[2]);
